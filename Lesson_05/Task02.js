@@ -6,4 +6,4 @@ const modifyText = text => {
     return firstLetter + otherLetters;
 }
 
-console.log(modifyText('привет Мир'));
+// console.log(modifyText('привет Мир'));

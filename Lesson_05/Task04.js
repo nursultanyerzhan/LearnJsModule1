@@ -21,4 +21,4 @@ const calculate = (totalSum, totalCount, promoCode) => {
     return _totalSum;
 }
 
-console.log(calculate(40000, 15, 'METHED'));
+// console.log(calculate(40000, 15, 'METHED'));
