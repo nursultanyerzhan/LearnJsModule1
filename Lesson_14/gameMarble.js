@@ -29,12 +29,12 @@
       if (computerGuessingIsPlayerNumberEven()) {
 
         if (playerHiddenNumber % 2 === 0) {
-          alert('Компьютер выбрал четное! Он получает шарики!');
+          alert(`Компьютер выбрал четное! Он получает шарики!`);
           result.playerBalls -= playerHiddenNumber;
           result.computerBalls += playerHiddenNumber;
         }
         else {
-          alert('Компьютер выбрал четное! Вы получаете шарики!');
+          alert(`Компьютер выбрал четное! Вы получаете шарики!`);
           result.playerBalls += playerHiddenNumber;
           result.computerBalls -= playerHiddenNumber;
         }
@@ -42,12 +42,12 @@
       else {
 
         if (playerHiddenNumber % 2 === 1) {
-          alert('Компьютер выбрал нечетное! Он получает шарики!');
+          alert(`Компьютер выбрал нечетное! Он получает шарики!`);
           result.playerBalls -= playerHiddenNumber;
           result.computerBalls += playerHiddenNumber;
         }
         else {
-          alert('Компьютер выбрал нечетное! Вы получаете шарики!');
+          alert(`Компьютер выбрал нечетное! Вы получаете шарики!`);
           result.playerBalls += playerHiddenNumber;
           result.computerBalls -= playerHiddenNumber;
         }
@@ -55,13 +55,17 @@
 
       if (result.computerBalls < 1) {
         const wantPlayerPlayAgain = confirm('Вы выиграли, хотите сыграть еще?');
-        if (wantPlayerPlayAgain)
-          runGame();
+        if (wantPlayerPlayAgain) {
+          const startGame = window.RPS();
+          startGame();
+        }
       } else
         if (result.playerBalls < 1) {
           const wantPlayerPlayAgain = confirm('Вы проиграли, хотите сыграть еще?');
-          if (wantPlayerPlayAgain)
-            runGame();
+          if (wantPlayerPlayAgain) {
+            const startGame = window.RPS();
+            startGame();
+          }
         } else computerGuessingNumber();
     }
 
@@ -71,24 +75,24 @@
 
       if (isComputerGuessEvenNumber) {
         if (computerOption % 2 === 0) {
-          alert('Компьютер загадал четное число! Вы получате шарики');
+          alert(`Компьютер загадал четное число (${computerOption})! Вы получате шарики`);
           result.playerBalls += computerOption;
           result.computerBalls -= computerOption;
         }
         else {
-          alert('Компьютер загадал нечетное число! Он получат шарики');
+          alert(`Компьютер загадал нечетное число(${computerOption})! Он получат шарики`);
           result.playerBalls -= computerOption;
           result.computerBalls += computerOption;
         }
       }
       else {
         if (computerOption % 2 === 1) {
-          alert('Компьютер загадал нечетное число! Вы получате шарики');
+          alert(`Компьютер загадал нечетное число(${computerOption})! Вы получате шарики`);
           result.playerBalls += computerOption;
           result.computerBalls -= computerOption;
         }
         else {
-          alert('Компьютер загадал четное число! Он получат шарики');
+          alert(`Компьютер загадал четное число(${computerOption})! Он получат шарики`);
           result.playerBalls -= computerOption;
           result.computerBalls += computerOption;
         }
@@ -96,13 +100,17 @@
 
       if (result.computerBalls < 1) {
         const wantPlayerPlayAgain = confirm('Вы выиграли, хотите сыграть еще?');
-        if (wantPlayerPlayAgain)
-          runGame();
+        if (wantPlayerPlayAgain) {
+          const startGame = window.RPS();
+          startGame();
+        }
       } else
         if (result.playerBalls < 1) {
           const wantPlayerPlayAgain = confirm('Вы проиграли, хотите сыграть еще?');
-          if (wantPlayerPlayAgain)
-            runGame();
+          if (wantPlayerPlayAgain) {
+            const startGame = window.RPS();
+            startGame();
+          }
         } else playerGuessingNumber();
     }
 
