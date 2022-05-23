@@ -44,9 +44,10 @@ console.log(result2);
 
 //task4
 {
-    const str = '<a href="http://site.ru">site.ru</a>';
+    const tags = ['<a href="http://site.ru">site.ru</a>', '<a href="http://site.com">site.com</a>'];
     let regExp = /".+?"/g;
-    const match = str.match(regExp);
-    // console.log(match);
-
+    tags.forEach(item => {
+        const match = item.match(regExp);
+        console.log(match);
+    });
 }
