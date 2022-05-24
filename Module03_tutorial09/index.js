@@ -30,7 +30,7 @@ array2.forEach(item => {
     if (checkMail(item))
         result2.push(item);
 });
-console.log(result2);
+// console.log(result2);
 
 
 //task3
@@ -45,9 +45,13 @@ console.log(result2);
 //task4
 {
     const tags = ['<a href="http://site.ru">site.ru</a>', '<a href="http://site.com">site.com</a>'];
-    let regExp = /".+?"/g;
-    tags.forEach(item => {
-        const match = item.match(regExp);
-        console.log(match);
+
+    const extractUrl = str => {
+        let regExp = /(http|https):\/\/\w+\.[a-z]+/g;
+        return str.match(regExp);
+    }
+
+    tags.forEach(element => {
+        console.log(extractUrl(element));
     });
 }
