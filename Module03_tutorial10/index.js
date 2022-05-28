@@ -18,10 +18,10 @@ const wrapper =
                     el('input', { className: 'input input__number', id: 'cardNumber' })),
                 el('div', { className: 'form__input-wrap form__input-wrap_date' },
                     el('label', { className: 'form__label form__date-label' }, 'Card Expiry'),
-                    el('input', { className: 'input input__date', type: 'text' })),
+                    el('input', { className: 'input input__date', type: 'date' })),
                 el('div', { className: 'form__input-wrap form__input-wrap_cvv' },
                     el('label', { className: 'form__label form__cvv-label' }, 'CVV'),
-                    el('input', { className: 'input input__cvv', type: 'text' })),
+                    el('input', { className: 'input input__cvv', type: 'number', max: 999, min:1 })),
                 el('button', { className: 'form__button' }, 'CHECK OUT'))));
 
 mount(document.body, wrapper);
@@ -32,12 +32,20 @@ const cardDate = document.querySelector('.card__date');
 
 const inputHolder = document.querySelector('.input__holder');
 inputHolder.addEventListener('input', () => {
+    if (inputHolder.value.length > 25) {
+        inputHolder.value = inputHolder.value.slice(0,25);
+    }
     cardName.textContent = inputHolder.value;
 });
 
 const inputDate = document.querySelector('.input__date');
-inputDate.addEventListener('input', () => {
-    cardDate.textContent = inputDate.value;
+inputDate.addEventListener('change', () => {
+    const getLikeTwoNumber = num => num < 10 ? '0' + num : num;
+    const date = new Date(inputDate.value);
+    const month = getLikeTwoNumber(date.getMonth() + 1); 
+    const year = date.getFullYear() - 2000;
+    const cardTerm = `${month}/${year}`;
+    cardDate.textContent = cardTerm;
 });
 
 const setSpace = numbers => {
@@ -73,4 +81,10 @@ inputNumber.addEventListener('input', () => {
         inputNumber.value = cardNumber.textContent = setSpace(a);
     }
 
+});
+
+const inputCvv = document.querySelector('.input__cvv');
+inputCvv.addEventListener('input', () => {
+    if (inputCvv.value.length > 3) 
+    inputCvv.value = inputCvv.value.slice(0,3);
 });
