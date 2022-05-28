@@ -28,10 +28,16 @@ mount(document.body, wrapper);
 
 const cardName = document.querySelector('.card__name');
 const cardNumber = document.querySelector('.card__number');
+const cardDate = document.querySelector('.card__date');
 
 const inputHolder = document.querySelector('.input__holder');
 inputHolder.addEventListener('input', () => {
     cardName.textContent = inputHolder.value;
+});
+
+const inputDate = document.querySelector('.input__date');
+inputDate.addEventListener('input', () => {
+    cardDate.textContent = inputDate.value;
 });
 
 const setSpace = numbers => {
@@ -68,7 +74,3 @@ inputNumber.addEventListener('input', () => {
     }
 
 });
-
-
-
-// console.log(setSpace('1278989854535138'));
