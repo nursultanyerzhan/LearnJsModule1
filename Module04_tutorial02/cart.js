@@ -22,30 +22,31 @@ const TechnicsGoods = function (productName, productPrice, productCount, discoun
 };
 
 const Cart = function (goods = []) {
-        this.goods = goods,
-        this.totalPrice = 0,
-        this.count = 0,
-        this.getTotalPrice = function () {
-            return this.totalPrice;
-        },
-        this.addGoods = function (good) {
-            this.goods.push(good);
-            this.calculateGoodsPrice();
-            this.increaseCount(good.productCount);
-        },
-        this.increaseCount = function (productCount) {
-            this.count += productCount;
-        },
-        this.calculateGoodsPrice = function () {
-           this.totalPrice = this.goods.reduce((total, item) => total + (item.productPrice * item.productCount - item.discount), 0);
-        },
-        this.clear = function () {
-            this.goods = [];
-            this.totalPrice = 0;
-            this.count = 0;
-        },
-        this.print = function () {
-            this.calculateGoodsPrice();
-            console.log(`${JSON.stringify(this.goods)}\n Общая сумма: ${this.totalPrice}`);
-        }
+    this.goods = goods,
+    this.totalPrice = 0,
+    this.count = 0
+};
+
+Cart.prototype.getTotalPrice = function () {
+    return this.totalPrice;
+};
+Cart.prototype.addGoods = function (good) {
+    this.goods.push(good);
+    this.calculateGoodsPrice();
+    this.increaseCount(good.productCount);
+};
+Cart.prototype.increaseCount = function (productCount) {
+    this.count += productCount;
+};
+Cart.prototype.calculateGoodsPrice = function () {
+    this.totalPrice = this.goods.reduce((total, item) => total + (item.productPrice * item.productCount - item.discount), 0);
+};
+Cart.prototype.clear = function () {
+    this.goods = [];
+    this.totalPrice = 0;
+    this.count = 0;
+};
+Cart.prototype.print = function () {
+    this.calculateGoodsPrice();
+    console.log(`${JSON.stringify(this.goods)}\n Общая сумма: ${this.totalPrice}`);
 };
